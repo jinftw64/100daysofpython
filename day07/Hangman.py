@@ -4,16 +4,21 @@ from random import choice
 
 word_list = ["ardvark", "baboon", "camel"]
 chosen_word = choice(word_list)
-
-print(f"This is the solution: {chosen_word}")
-guess = input("Guess a letter: ").lower()
-
+word_length = len(chosen_word)
 display = []
-for letter in range(len(chosen_word)):
+
+for letter in range(word_length):
     display.append("_")
 
-for position in range(len(chosen_word)):
-    if chosen_word[position] == guess:
-        display[position] = chosen_word[position]
+while "_" in display:
+    print(f"This is the solution: {chosen_word}")
+    guess = input("Guess a letter: ").lower()
 
-print(display)
+    for position in range(word_length):
+        letter = chosen_word[position]
+        if letter == guess:
+            display[position] = letter
+
+    print(display)
+
+print("You win!")
